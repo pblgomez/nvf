@@ -191,18 +191,22 @@
       ''
         vim.opt.colorcolumn = "160"
         vim.opt.conceallevel= 1
-        vim.opt.scrolloff = 20
+        vim.opt.foldlevel = 2
         vim.opt.ignorecase = true
+        vim.opt.scrolloff = 20
         vim.opt.swapfile = false
         vim.opt.virtualedit = "block"
-        vim.opt.foldlevel = 2
       '';
     notes.obsidian = {
       enable = true;
       setupOpts.dir = "~/Notes";
     };
     statusline.lualine.enable = true;
-    spellcheck.enable = true;
+    spellcheck = {
+      # TODO: Failing right now
+      enable = false;
+      languages = [ ];
+    };
     tabline = {
       nvimBufferline.enable = true;
     };
