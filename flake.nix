@@ -5,19 +5,30 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
     systems.url = "github:nix-systems/default";
   };
-  outputs = { nixpkgs, nvf, systems, ... }:
-    let forEachSystem = nixpkgs.lib.genAttrs (import systems);
-    in {
-      packages = forEachSystem (system:
+  outputs =
+    {
+      nixpkgs,
+      nvf,
+      systems,
+      ...
+    }:
+    let
+      forEachSystem = nixpkgs.lib.genAttrs (import systems);
+    in
+    {
+      packages = forEachSystem (
+        system:
         let
           pkgs = nixpkgs.legacyPackages.${system};
           customNeovim = nvf.lib.neovimConfiguration {
             modules = [ ./neovim.nix ];
             inherit pkgs;
           };
-        in rec {
+        in
+        rec {
           default = customNeovim.neovim;
           neovim = default;
-        });
+        }
+      );
     };
 }

@@ -1,4 +1,5 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+{
   vim = {
     assistant = {
       chatgpt.enable = true;
@@ -99,18 +100,27 @@
       }
       # Delete without yank
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         action = ''"_d'';
         key = "<leader>d";
       }
       # Yank to clipboard
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         action = ''"+y'';
         key = "<leader>y";
       }
       {
-        mode = [ "n" "v" ];
+        mode = [
+          "n"
+          "v"
+        ];
         action = ''"+Y'';
         key = "<leader>Y";
       }
@@ -173,15 +183,19 @@
       };
       go.enable = true;
     };
-    lsp = { formatOnSave = true; };
+    lsp = {
+      formatOnSave = true;
+    };
     luaConfigPost =
       # lua
       ''
         vim.opt.colorcolumn = "160"
+        vim.opt.conceallevel= 1
         vim.opt.scrolloff = 20
         vim.opt.ignorecase = true
         vim.opt.swapfile = false
         vim.opt.virtualedit = "block"
+        vim.opt.foldlevel = 2
       '';
     notes.obsidian = {
       enable = true;
@@ -189,7 +203,9 @@
     };
     statusline.lualine.enable = true;
     spellcheck.enable = true;
-    tabline = { nvimBufferline.enable = true; };
+    tabline = {
+      nvimBufferline.enable = true;
+    };
     theme = {
       enable = true;
       name = "gruvbox";
@@ -199,7 +215,9 @@
     ui = {
       colorizer.enable = true;
       noice.enable = true;
-      smartcolumn = { enable = true; };
+      smartcolumn = {
+        enable = true;
+      };
     };
     utility.surround.enable = true;
     undoFile.enable = true;
