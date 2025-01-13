@@ -193,6 +193,7 @@
         vim.opt.conceallevel= 1
         vim.opt.foldlevel = 2
         vim.opt.ignorecase = true
+        vim.opt.backup = false
         vim.opt.scrolloff = 20
         vim.opt.swapfile = false
         vim.opt.virtualedit = "block"
