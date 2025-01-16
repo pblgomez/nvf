@@ -189,11 +189,11 @@
     luaConfigPost =
       # lua
       ''
-        vim.opt.colorcolumn = "160"
+        vim.opt.colorcolumn = "80,160"
         vim.opt.conceallevel= 1
         vim.opt.foldlevel = 2
-        vim.opt.ignorecase = true
         vim.opt.backup = false
+        vim.opt.ignorecase = true
         vim.opt.scrolloff = 20
         vim.opt.swapfile = false
         vim.opt.virtualedit = "block"
@@ -201,6 +201,12 @@
     notes.obsidian = {
       enable = true;
       setupOpts.dir = "~/Notes";
+    };
+    options = {
+      expandtab = true;
+      shiftwidth = 4;
+      tabstop = 4;
+      softtabstop = 4;
     };
     statusline.lualine.enable = true;
     spellcheck = {
@@ -221,7 +227,7 @@
       colorizer.enable = true;
       noice.enable = true;
       smartcolumn = {
-        enable = true;
+        enable = false;
       };
     };
     utility.surround.enable = true;
