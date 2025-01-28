@@ -14,6 +14,12 @@
       whichKey.enable = true;
     };
     comments.comment-nvim.enable = true;
+    debugger = {
+      nvim-dap = {
+        enable = true;
+        ui.enable = true;
+      };
+    };
     extraPlugins = with pkgs.vimPlugins; {
       neogit = {
         package = neogit;
@@ -172,16 +178,23 @@
         extraDiagnostics.enable = true;
         format.enable = true;
       };
-      terraform.enable = true;
+      go = {
+        enable = true;
+        dap.enable = true;
+      };
       nix = {
         enable = true;
+        extraDiagnostics.enable = true;
         format = {
           type = "nixfmt";
           enable = true;
         };
-        extraDiagnostics.enable = true;
       };
-      go.enable = true;
+      python = {
+        enable = true;
+        dap.enable = true;
+      };
+      terraform.enable = true;
     };
     lsp = {
       formatOnSave = true;
