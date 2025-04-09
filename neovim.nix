@@ -30,7 +30,10 @@
         setup = "require('oil').setup()";
       };
     };
-    git.gitsigns.enable = true;
+    git = {
+      gitsigns.enable = true;
+      gitsigns.codeActions.enable = true;
+    };
     hideSearchHighlight = true;
     keymaps = [
       # Navigate splits
@@ -221,6 +224,7 @@
       tabstop = 4;
       softtabstop = 4;
     };
+    projects.project-nvim.enable = true;
     statusline.lualine.enable = true;
     spellcheck = {
       # TODO: Failing right now
