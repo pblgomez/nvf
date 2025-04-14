@@ -29,6 +29,17 @@
         package = oil-nvim;
         setup = "require('oil').setup()";
       };
+      kulala = {
+        package = kulala-nvim;
+        setup = # lua
+          ''
+            require('kulala').setup({
+              split_direction = "horizontal",
+              ft = {"http", "rest"},
+              global_keymaps = false,
+            })
+          '';
+      };
     };
     git = {
       gitsigns.enable = true;
@@ -171,6 +182,24 @@
         key = "<leader>gP";
         mode = "n";
       }
+
+      # Kulala (REST) commands
+      {
+        action = ":lua require('kulala').run()<CR>";
+        key = "<leader>Rs";
+        mode = "n";
+      }
+      {
+        action = ":lua require('kulala').replay()<CR>";
+        key = "<leader>Rr";
+        mode = "n";
+      }
+      # Terminal commands
+      {
+        action = "<cmd>:split term://glab mr create --assignee pblgomez --fill --push --no-editor --remove-source-branch --squash-before-merge --yes<CR>";
+        key = "<leader>tmc";
+        mode = "n";
+      }
     ];
     languages = {
       enableDAP = true;
@@ -213,6 +242,7 @@
         vim.opt.scrolloff = 20
         vim.opt.swapfile = false
         vim.opt.virtualedit = "block"
+        vim.api.nvim_create_autocmd({"BufRead","BufNewFile"},{pattern="*.http",command="setfiletype http",})
       '';
     notes.obsidian = {
       enable = true;
