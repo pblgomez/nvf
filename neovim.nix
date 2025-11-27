@@ -254,7 +254,13 @@
       tabstop = 4;
       softtabstop = 4;
     };
-    projects.project-nvim.enable = true;
+    projects.project-nvim = {
+      enable = true;
+      setupOpts = {
+        manual_mode = false;
+        detection_methods = [ "pattern" ];
+      };
+    };
     statusline.lualine.enable = true;
     spellcheck = {
       # TODO: Failing right now
