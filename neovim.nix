@@ -40,6 +40,14 @@
             })
           '';
       };
+      git-worktree = {
+        package = git-worktree-nvim;
+        setup = # lua
+          ''
+            require('git-worktree').setup()
+            require('telescope').load_extension('git_worktree')
+          '';
+      };
     };
     git = {
       gitsigns.enable = true;
@@ -182,6 +190,17 @@
         key = "<leader>gP";
         mode = "n";
       }
+      # Git worktree
+      {
+        action = "<cmd>:Telescope git_worktree git_worktrees<CR>";
+        key = "<leader>gw";
+        mode = "n";
+      }
+      {
+        action = "<cmd>:Telescope git_worktree create_git_worktree<CR>";
+        key = "<leader>gW";
+        mode = "n";
+      }
 
       # Kulala (REST) commands
       {
@@ -243,6 +262,30 @@
         vim.opt.swapfile = false
         vim.opt.virtualedit = "block"
         vim.api.nvim_create_autocmd({"BufRead","BufNewFile"},{pattern="*.http",command="setfiletype http",})
+
+        -- Git worktree indicator for lualine
+        local function get_git_worktree()
+          local handle = io.popen("git rev-parse --show-toplevel 2>/dev/null")
+          if handle then
+            local result = handle:read("*a")
+            handle:close()
+            if result and result ~= "" then
+              local worktree_name = result:match("([^/]+)%s*$")
+              if worktree_name then
+                return " " .. worktree_name
+              end
+            end
+          end
+          return ""
+        end
+
+        -- Add worktree component to lualine section b (after branch)
+        local lualine_config = require('lualine').get_config()
+        table.insert(lualine_config.sections.lualine_b, 2, {
+          get_git_worktree,
+          color = { fg = "#fabd2f", gui = "bold" },
+        })
+        require('lualine').setup(lualine_config)
       '';
     notes.obsidian = {
       enable = true;
