@@ -248,8 +248,7 @@
       comment-nvim.enable = true;
     };
 
-    # Custom formatter configuration - must come AFTER languages section
-    # to properly override the formatter arguments
+    # Custom formatter configuration - must come AFTER languages section to properly override the formatter arguments
     formatter.conform-nvim.setupOpts = {
       formatters.nixfmt = {
         command = "${pkgs.nixfmt}/bin/nixfmt";
@@ -405,7 +404,7 @@
         mode = "n";
       }
       {
-        action = "<cmd>lua require('toggleterm').exec('nix run nixpkgs#gh -- pr create', nil, nil, nil, 'float')<CR>";
+        action = "<cmd>lua require('toggleterm').exec([[nix run nixpkgs#gh -- pr create --base \"$(git branch --remotes | awk -F '-> origin/' 'NR==1{print $2}')\" --fill]], nil, nil, nil, 'float')<CR>";
         key = "<leader>thc";
         mode = "n";
       }
