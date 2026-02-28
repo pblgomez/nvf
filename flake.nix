@@ -28,12 +28,7 @@
       devShells = forEachSystem (
         { pkgs, system }:
         {
-          default = pkgs.mkShellNoCC {
-            packages = [
-              pkgs.hello
-              self.packages.${system}.default
-            ];
-          };
+          default = pkgs.mkShellNoCC { packages = [ self.packages.${system}.default ]; };
         }
       );
       packages = forEachSystem (
