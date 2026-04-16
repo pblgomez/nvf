@@ -65,7 +65,16 @@
       lspSignature.enable = true;
       otter-nvim.enable = false;
       nvim-docs-view.enable = false;
-      harper-ls.enable = false;
+      presets.harper.enable = false;
+    };
+    mini.files = {
+      enable = true;
+      setupOpts = {
+        windows = {
+          preview = true;
+          width_preview = 80;
+        };
+      };
     };
     spellcheck = {
       enable = true;
@@ -165,10 +174,10 @@
       smart-splits.enable = false;
       undotree.enable = false;
       nvim-biscuits.enable = false;
-      oil-nvim = {
-        enable = true;
-        gitStatus.enable = true;
-      };
+      # oil-nvim = {
+      #   enable = true;
+      #   gitStatus.enable = true;
+      # };
 
       motion = {
         hop.enable = true;
@@ -408,17 +417,18 @@
         key = "<leader>thc";
         mode = "n";
       }
-      # Oil
+      # Files
       {
-        action = "<cmd>:lua require('oil').toggle_float()<CR>";
+        # action = "<cmd>:lua require('oil').toggle_float()<CR>";
+        action = "<cmd>:lua MiniFiles.open()<CR>";
         key = "<leader>e";
         mode = "n";
       }
-      {
-        action = "<cmd>:Oil .<CR>";
-        key = "<leader>E";
-        mode = "n";
-      }
+      # {
+      #   action = "<cmd>:Oil .<CR>";
+      #   key = "<leader>E";
+      #   mode = "n";
+      # }
       # Noice messages
       {
         action = "<cmd>:Noice<CR>";
