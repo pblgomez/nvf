@@ -35,7 +35,7 @@
       sql.enable = false;
       java.enable = false;
       kotlin.enable = false;
-      ts.enable = false;
+      typescript.enable = false;
       go.enable = true;
       lua.enable = false;
       python = {
@@ -420,8 +420,13 @@
       # Files
       {
         # action = "<cmd>:lua require('oil').toggle_float()<CR>";
-        action = "<cmd>:lua MiniFiles.open()<CR>";
+        action = "<cmd>:lua MiniFiles.open(vim.api.nvim_buf_get_name(0), false)<CR>";
         key = "<leader>e";
+        mode = "n";
+      }
+      {
+        action = "<cmd>:lua MiniFiles.open()<CR>";
+        key = "<leader>E";
         mode = "n";
       }
       # {
