@@ -158,7 +158,10 @@
     };
 
     projects = {
-      project-nvim.enable = true;
+      project-nvim = {
+        enable = true;
+        setupOpts.manual_mode = false;
+      };
     };
     undoFile.enable = true;
     utility = {
@@ -193,7 +196,6 @@
     notes = {
       neorg.enable = false;
       orgmode.enable = false;
-      mind-nvim.enable = false;
       todo-comments.enable = true;
     };
 
