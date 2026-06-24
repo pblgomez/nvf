@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   vim = {
     debugger = {
       nvim-dap = {
@@ -446,6 +445,7 @@
     luaConfigPost =
       # lua
       ''
+        vim.opt.foldlevel = 3
         vim.opt.ignorecase = true
         vim.opt.scrolloff = 20
         vim.opt.virtualedit = "block"
